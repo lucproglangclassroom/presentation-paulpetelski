@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js">
+        </script>
+    <style>
+        #board {
+            font-size: 46px;
+            font-family: sans-serif;
+        }
+        #box{
+            background-color: "#69b3a2";
+            height: 10px;
+            width: 100px;
+        }
+        .format {
+            font-size: 46px;
+            font-family: sans-serif;
+        }
+        body{
+            margin: 60px;
+        }
+        </style>
+</head>
+<body>
+
+    <h1 class="format">Current Time:</h1>
+    <div class="format" id="board"></div>
+    <div class="format" id="box"></div>
+
+    <script type="text/coffeescript">
+
+        displayTime = -> 
+            date = new Date()
+            time = date.toLocaleTimeString()
+            board.innerHTML = time
+
+        setInterval(displayTime, 1000)
+
+        d3.select("#box").transition().duration(1000).style("background-color", "#69b3a2")
+
+        animation = anime({
+            targets: "#box",
+            width: '100%',
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            loop: true,
+            duration: 2500
+        })
+
+    </script>
+    
+</body>
+</html>
